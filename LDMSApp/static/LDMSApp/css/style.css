@@ -120,3 +120,45 @@ header{
     display: block;
   }
 }
+
+/*footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 40px 0;
+}
+
+footer h3 {
+  color: #fff;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+footer p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  text-decoration: underline;
+}
+
+footer ul li i {
+  margin-right: 10px;
+}
+/*end of footer*/
