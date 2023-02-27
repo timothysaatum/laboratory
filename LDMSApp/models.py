@@ -61,27 +61,30 @@ REGIONS = [
 		('SR', 'Savannah'),
 		('UE', 'Upper East')
 	]
-
+#
 #registeration of facilities
 #this is the model to register a laboratory facility so that clinicians can have access to
 #it should define the various test capacities of the laboratory
-class LaboratoryRegisteration(models.Model):
+class Laboratory(models.Model):
 
+	verbose_name 		= 'Laboratories'
 	laboratory_name 	= models.CharField(max_length=200)
 	address 			= models.TextField()
 	Tel 				= models.IntegerField()
 	digital_address 	= models.CharField(max_length=100)
 	region_of_location 	= models.CharField(max_length=2, choices=REGIONS)
+	#let them list the the tests they do in laboratory separated by commas or spaces
+	#this is to enable it to be displayed using strip method
 	services_rendering 	= models.CharField(max_length=500)
 
 	def __str__(self):
 		return self.laboratory_name
-
-
-
+#
+#
+#
 #this is the model for hospitals to sign up to our system
 #so that they can make request through it
-class HospitalREgisteration(models.Model):
+class Hospital(models.Model):
 
 	hospital_name 		= models.CharField(max_length=200)
 	name_of_laboratory 	= models.CharField(max_length=200)
@@ -92,7 +95,34 @@ class HospitalREgisteration(models.Model):
 
 	def __str__(self):
 		return self.hospital_name
-
-
+#
+#
+#
+#
+#this is to be use to submit the results of a test to 
+#the hospital requesting the test
+#
 class TestResults(models.Model):
-	pass
+
+	laboratory 		= models.OneToOneField(Laboratory, on_delete=models.CASCADE)
+	test 			= models.CharField(max_length=300)
+	test_id 		= models.CharField(max_length=100)
+	upload_pdf 		= models.FileField(upload_to='static/test_results', null=True, blank=True)
+	enter_results 	= models.TextField(null=True, blank=True)
+	send_to 		= models.OneToOneField(Hospital, primary_key=True, on_delete=models.CASCADE)
+
+	def __str__(self):
+		return self.lab_sending.laboratory_name
+#
+#
+#
+#
+#model for requesting for a test
+class RequestTest(models.Model):
+	request_to = models.OneToOneField(Laboratory, on_delete=models.CASCADE, primary_key=True)
+	name_of_test = models.TextField()
+	description = models.TextField()
+	name_requestor = models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.name_of_test
