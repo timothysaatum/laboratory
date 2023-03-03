@@ -162,3 +162,18 @@ footer ul li i {
   margin-right: 10px;
 }
 /*end of footer*/
+
+/* side bars */
+
+.side-bar{
+  background-color: #7A0F00;
+  border: solid #00FF00 thin;
+  border-radius: 4%;
+}
+/* end of sidebar */
+
+/* home page bg */
+
+.home-bg{
+  background-color: #c2fff2;
+}
