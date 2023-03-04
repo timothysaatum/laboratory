@@ -1,0 +1,26 @@
+<!--=============================Extending the base template=================-->
+
+{% extends 'LDMSApp/base.html' %}
+{% load crispy_forms_tags %}
+<!--=============================End of Extension=============================-->
+
+
+<!--=============================Beginning of Title Block=====================-->
+{% block title %}
+LDMS | Lab-sign-up
+{% endblock title %}
+<!--=============================End of title Block=============================-->
+
+<!--=============================Beginning of Content Block=====================-->
+{% block content %}
+<section class="container">
+	<form method="post">
+    	{% csrf_token %}
+    	<div class="form-group col-md-6 mb-0">
+        {{ l_form|crispy }}
+      	</div>
+    	<button type="submit" class="btn btn-primary">Create Account</button>
+ 	</form>
+</section>
+{% endblock content %}
+<!--=============================End of Content Block=============================-->

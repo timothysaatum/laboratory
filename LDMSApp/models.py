@@ -62,7 +62,7 @@ REGIONS = [
 		('UE', 'Upper East')
 	]
 #
-#registeration of facilities
+#registeration of laboraotry facilities
 #this is the model to register a laboratory facility so that clinicians can have access to
 #it should define the various test capacities of the laboratory
 class Laboratory(models.Model):

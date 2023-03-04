@@ -166,7 +166,7 @@ footer ul li i {
 /* side bars */
 
 .side-bar{
-  font-family: 'Roboto', sans-serif;
+  font-family: monospace;
   background-color: #0e4d53;
   border: solid #00FF00 thin;
   border-radius: 4%;
