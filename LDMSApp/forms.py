@@ -1,7 +1,15 @@
 from django.forms import ModelForm
-from .models import Laboratory
+from .models import Laboratory, Hospital
 
-class LabSignUp(ModelForm):
+
+
+class AddLaboratory(ModelForm):
 	class Meta:
 		model = Laboratory
+		fields = '__all__'
+
+
+class AddHospital(ModelForm):
+	class Meta:
+		model = Hospital
 		fields = '__all__'

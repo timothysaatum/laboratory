@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     ############################
     'LDMSApp',
+    'users',
     'crispy_forms',
     'crispy_bootstrap5',
 ]

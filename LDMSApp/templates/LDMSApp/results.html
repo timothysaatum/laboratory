@@ -1,0 +1,51 @@
+<!--=============================Extending the base template=================-->
+
+{% extends 'LDMSApp/base.html' %}
+{% load crispy_forms_tags %}
+<!--=============================End of Extension=============================-->
+
+
+<!--=============================Beginning of Title Block=====================-->
+{% block title %}
+LDMS | Submit Results
+{% endblock title %}
+<!--=============================End of title Block=============================-->
+
+<!--=============================Beginning of Content Block=====================-->
+{% block content %}
+<section class="m-5">
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat.</p>
+	<hr>
+	<div class="container p-3 bg-light">
+		<div class="row">
+			<div class="col-12 col-md-4">
+				<h4 class="text-danger text-decoration-underline text-center">Upload Results as PDf</h4>
+				<div class="col-12 bg-danger d-flex justify-content-center">
+					<button class="btn fw-bolder text-light p-5 text-capitalize" title="Upload Pdf"><i class="fa-solid fa-file-circle-plus fa-4x"></i></button>
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<h4 class="text-warning text-decoration-underline text-center">Enter test results</h4>
+				<div class="col-12 bg-warning d-flex justify-content-center">
+					<button class="btn fw-bolder text-light p-5 text-capitalize" title="Enter and submit test results"><i class="fa-solid fa-file-lines fa-4x"></i></button>
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<h4 class="text-primary text-decoration-underline text-center">Set up automatic transfer</h4>
+				<div class="col-12 bg-primary d-flex justify-content-center">
+					<button class="btn fw-bolder text-light p-5 text-capitalize" title="automatic transfer"><i class="fa-solid fa-robot fa-4x"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<p class="my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+	consequat.</p>
+</section>
+{% endblock content %}
+<!--=============================End of Content Block=============================-->

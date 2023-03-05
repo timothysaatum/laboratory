@@ -67,9 +67,9 @@ REGIONS = [
 #it should define the various test capacities of the laboratory
 class Laboratory(models.Model):
 
-	verbose_name 		= 'Laboratories'
+	verbose_name_plural	= 'Laboratories'
 	laboratory_name 	= models.CharField(max_length=200)
-	address 			= models.TextField()
+	address 			= models.CharField(max_length=200)
 	Tel 				= models.IntegerField()
 	digital_address 	= models.CharField(max_length=100)
 	region_of_location 	= models.CharField(max_length=2, choices=REGIONS)
@@ -88,7 +88,7 @@ class Hospital(models.Model):
 
 	hospital_name 		= models.CharField(max_length=200)
 	name_of_laboratory 	= models.CharField(max_length=200)
-	address 			= models.TextField()
+	address 			= models.CharField(max_length=200)
 	Tel 				= models.IntegerField()
 	digital_address 	= models.CharField(max_length=100)
 	region_of_location 	= models.CharField(max_length=2, choices=REGIONS)
