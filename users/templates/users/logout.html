@@ -7,32 +7,19 @@
 
 <!--=============================Beginning of Title Block=====================-->
 {% block title %}
-LDMS | Lab-sign-up
+LDMS | Logged out
 {% endblock title %}
 <!--=============================End of title Block=============================-->
 
 <!--=============================Beginning of Content Block=====================-->
 {% block content %}
 <section class="container my-3 bg-light">
-	<div class="text-center">
-		<legend class="text-capitalize fw-bolder mt-2 text-decoration-underline text-success">work have never been this easier</legend>
-		<small class="bg-info fw-bold text-danger p-2">Make an investment that counts</small>
-	</div>
 	<div class="mt-4 d-flex justify-content-center align-items-center">
-		<form method="post">
-    		{% csrf_token %}
-    		<div class="form-group col-12 p-4 shadow text-primary fw-bolder">
-        	{{ form|crispy }}
-      		</div>
-    		<div class="d-flex justify-content-center">
-    			<button type="submit" class="btn btn-primary my-2">Proceed to Pay</button>
-    		</div>
- 		</form>
+		<small class="text-muted  text-white">
+			Don't have an account?
+			<a href="{% url 'login' %}" class="text-success">Sign In</a>
+		</small>
 	</div>
-	<small class="text-muted  text-white">
-      	Already have an account? 
-    	<a href="{% url 'signup' %}" class="text-success">Login</a>
-    </small>
 </section>
 {% endblock content %}
 <!--=============================End of Content Block=============================-->

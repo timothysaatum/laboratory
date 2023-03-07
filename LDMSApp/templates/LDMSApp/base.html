@@ -26,7 +26,7 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-    <header>
+    <header class="shadow-lg">
       <div class="inner-width">
         <a href="{% url 'home' %}" class="logo"><img src="{% static 'LDMSApp/images/logo.png' %}" alt="ldms home page" title="Home Page"></a>
         <i class="menu-toggle-btn fas fa-bars"></i>
@@ -34,7 +34,12 @@
           <a href="{% url 'home' %}"><i class="fas fa-home home" title="Home Page"></i> Home</a>
           <a href="#"><i class="fas fa-align-left about"></i> About</a>
           <a href="#"><i class="fab fa-buffer works"></i> Works</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}"><i class="fas fa-users team"></i> Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}"><i class="fas fa-users team"></i> Login</a>
           <a href="{% url 'signup' %}"><i class="fas fa-users team"></i> Sign Up</a>
+          {% endif %}
           <a href="#"><i class="fas fa-headset contact"></i> Contact</a>
         </nav>
       </div>
@@ -43,6 +48,7 @@
     {% block content %}
 
     {% endblock content %}
+    {% if not user.is_authenticated %}
     <section class="bg-dark text-white">
       <footer>
     <div class="container">
@@ -73,6 +79,7 @@
 </footer>
 
     </section>
+  {% endif %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
