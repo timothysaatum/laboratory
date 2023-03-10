@@ -33,11 +33,11 @@ header{
 }
 
 .navigation-menu a{
-  margin-left: 10px;
+  margin-left: 5px;
   color: #000000;
   text-transform: uppercase;
   font-size: 14px;
-  padding: 12px 20px;
+  padding: 6px 10px;
   border-radius: 4px;
   transition: .3s linear;
 }
@@ -48,7 +48,7 @@ header{
 }
 
 .navigation-menu i{
-  margin-right: 8px;
+  margin-right: 3px;
   font-size: 16px;
 }
 
@@ -83,7 +83,7 @@ header{
 }
 
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:828px) {
   .menu-toggle-btn{
     display: block !important;
   }
@@ -166,13 +166,8 @@ footer ul li i {
 
 .side-bar{
   font-family: monospace;
-  background-color: #000033;
+  /*background-color: #000033;*/
   color: #cedfe4;
-  border-right: solid whitesmoke thin;
-  border-bottom: solid whitesmoke thin;
-  box-shadow: 20px 20px 20px;
-  /*position: relative;
-  z-index: 1;*/
 }
 
 
@@ -187,14 +182,41 @@ footer ul li i {
   background: url('../images/microscope.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(70%)
-  z-index: -1;
 }
 
+
+.scrole{
+  height: 85vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #191970;
+}
+
+
+.btn-light-green{
+  background-color: limegreen;
+  opacity: 0.7;
+  color: white;
+}
+
+.btn-light-blue{
+  background-color: #191970;
+  opacity: 0.7;
+  color: wite;
+}
+.btn-light-blue:hover{
+  color: black;
+}
+
+.btn-light-yellow{
+  background-color: #FF8C00;
+  opacity: 0.7;
+}
+/*
 .fil{
   filter: brightness(70%);
 }
-
+*/
 .mid-bg{
   /*background-color: #0e4d53;
   opacity: 0.9;*/

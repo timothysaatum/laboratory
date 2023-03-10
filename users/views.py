@@ -1,34 +1,34 @@
 from django.shortcuts import render, redirect
-from .forms import SignUp
+from django.contrib import messages
+from .forms import SignUp, UserUpdateForm, ProfileUpdateForm
+from django.contrib.auth.decorators import login_required
 
 def sign_up(request):
     if request.method == 'POST':
         form = SignUp(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Please Update profile')
             return redirect('login')
     else:
         form = SignUp()
     return render(request, 'users/register.html', {'form':form})
-#
-#form to be displayed for hospitals to create account
-#def hospital_sign_up(request):
-#    if request.method == 'POST':
-#        form = HospitalSignUp(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('home')
-#    else:
-#        form = HospitalSignUp()
-#    return render(request, 'users/hospital.html', {'form':form})
-#
-#
-#def delivery_sign_up(request):
-#    if request.method == 'POST':
-#        form = DeliverySingUP(request.POST)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('home')
-#    else:
-#       form = DeliverySingUP()
-#    return render(request, 'users/delivery.html', {'form':form})
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, 'Accounted updated successfully')
+            return redirect('profile')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    context = {
+        'u_form':u_form,
+        'p_form':p_form
+    }
+    return render(request, 'users/profile.html', context)

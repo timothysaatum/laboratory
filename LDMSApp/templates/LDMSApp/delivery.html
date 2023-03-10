@@ -7,7 +7,7 @@
 
 <!--=============================Beginning of Title Block=====================-->
 {% block title %}
-LDMS | Lab-sign-up
+LDMS | Delivery-sign-up
 {% endblock title %}
 <!--=============================End of title Block=============================-->
 
@@ -15,7 +15,7 @@ LDMS | Lab-sign-up
 {% block content %}
 <section class="container my-3 bg-light">
 	<div class="text-center">
-		<legend class="text-capitalize fw-bolder mt-2 text-decoration-underline text-success">work have never been this easier</legend>
+		<legend class="text-capitalize fw-bolder mt-2 text-decoration-underline text-success">Get work from wherever you are!</legend>
 		<small class="bg-info fw-bold text-danger p-2">Make an investment that counts</small>
 	</div>
 	<div class="mt-4 d-flex justify-content-center align-items-center">
@@ -25,14 +25,10 @@ LDMS | Lab-sign-up
         	{{ form|crispy }}
       		</div>
     		<div class="d-flex justify-content-center">
-    			<button type="submit" class="btn btn-primary my-2">Save and continue</button>
+    			<button type="submit" class="btn btn-primary my-2">Proceed to Pay</button>
     		</div>
  		</form>
 	</div>
-	<small class="text-muted  text-white">
-      	Already have an account? 
-    	<a href="{% url 'signup' %}" class="text-success">Login</a>
-    </small>
 </section>
 {% endblock content %}
 <!--=============================End of Content Block=============================-->

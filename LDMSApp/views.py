@@ -2,20 +2,20 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 #from django.utils.decorators import method_decorator
-from .forms import AddLaboratory, AddHospital
+from .forms import AddLaboratory, AddHospital, AddTestResults, AddPatient, MakeTestRequest, AddDelivery
 
 
 def home_page(request):
 	if request.method == 'POST':
-		re_form = AddHospital(request.POST)
-		sub_form = AddLaboratory(request.POST)
-		if re_form.is_valid() and sub_form.is_valid():
+		re_form = MakeTestRequest(request.POST)
+		add_form = AddTestResults(request.POST)
+		if re_form.is_valid() and add_form.is_valid():
 			re_form.save()
-			sub_form.save()
+			add_form.save()
 			return redirect('home')
-	re_form = AddHospital()
-	sub_form = AddLaboratory()
-	return render(request, 'LDMSApp/index.html', {'re_form':re_form, 'sub_form':sub_form})
+	re_form = MakeTestRequest()
+	add_form = AddTestResults()
+	return render(request, 'LDMSApp/index.html', {'re_form':re_form, 'sub_form':add_form})
 #home view
 #class HomeView(TemplateView):
 #	template_name = 'LDMSApp/index.html'
@@ -48,7 +48,14 @@ def add_hospital(request):
 
 	return render(request, 'LDMSApp/hospital.html', {'form':form})
 #
-#
 @login_required
-def submit_results(request):
-	return render(request, 'LDMSApp/results.html')
+def delivery(request):
+	if request.method == 'POST':
+		form = AddDelivery(request.POST)
+		if form.is_valid():
+			form.cleaned_data['company_name']
+			form.save()
+			return redirect('home')
+	form = AddDelivery()
+
+	return render(request, 'LDMSApp/delivery.html', {'form':form})
