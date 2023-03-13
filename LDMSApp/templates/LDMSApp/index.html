@@ -19,19 +19,44 @@ LDMS | Home
 	<div class="container-fluid">
 		<div class="row text-capitalize fw-bolder">
 			<div class="col-12 col-md-2">
+				<small class="text-center text-light">Notifications</small>
 				<div class="scrole">
-					<div class="d-flex justify-content-center">
-						<a href="{% url 'hospital' %}" title="Hospital" class="text-decoration-none">Add Hospital</a>
+					{% for test in req_notifi %}
+						<div class="row">
+							<div class="col-12 d-flex d-inline-block py-2">
+								<small class="text-light fw-bolder">{{test.type_of_test}}-{{test.department}} <button type="button" data-bs-toggle="modal" data-bs-target="#ShowId" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
+								<div>
+							<!-- Modal -->
+							<div class="modal fade" id="ShowId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-scrollable">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h1 class="modal-title fs-5" id="staticBackdropLabel">Details</h1>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											<form method="POST">
+											<p>{{test.description}}</p>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+											<input type="submit" class="btn btn-primary" value="Submit">
+										</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+							</div>
+						</div>
+					{% empty %}
+					<div>
+						<small>No test send yet</small>
 					</div>
-					<div class="d-flex justify-content-center">
-						<a href="{% url 'lab' %}" title="Laboratory" class="text-decoration-none">Add Laboratory</a>
-					</div>
-					<div class="d-flex justify-content-center">
-						<a href="{% url 'delivery' %}" title="Delivery" class="text-decoration-none">Add Delivery</a>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
-			<div class="col-12 col-md-10 pt-5 pb-5 d-flex justify-content-center align-items-center">
+			<div class="col-12 col-md-8 pt-5 pb-5 d-flex justify-content-center align-items-center">
 				<div class="row text-center d-flex justify-content-center align-items-center">
 					<div class="col-12 col-md-3 m-2 mid-bg">
 						<div>
@@ -48,12 +73,15 @@ LDMS | Home
 											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 										</div>
 										<div class="modal-body">
-											{{re_form|crispy}}
+											<form method="POST">
+											{% csrf_token %}
+											{{form|crispy}}
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-											<button type="button" class="btn btn-primary">Submit</button>
+											<input type="submit" class="btn btn-primary" value="Submit">
 										</div>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -117,11 +145,25 @@ LDMS | Home
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<small class="text-center text-light">Recent Submissions</small>
+				<div class="scrole">
+					<div class="p-2 my-3">
+						<a href="{% url 'hospital' %}" title="Hospital" class="text-decoration-none text-light link-special p-3">Add Hospital</a>
+					</div>
+					<div class="p-2 my-3">
+						<a href="{% url 'lab' %}" title="Laboratory" class="text-decoration-none text-light link-special p-3">Add Laboratory</a>
+					</div>
+					<div class="p-2 my-3">
+						<a href="{% url 'delivery' %}" title="Delivery" class="text-decoration-none text-light link-special p-3">Add Delivery</a>
+					</div>
+				</div>
 			</div>			
 		</div>
 	</div>
 </section>
-<section class="my-5 shadow">
+<section class="my-5 mb-3 shadow">
 	<div class="container">
 		<h2 class="text-capitalize text-center my-5">Be the first to be in the know</h2>
 		<hr>
@@ -135,12 +177,12 @@ LDMS | Home
 				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 				</p>
 			</div>
-			<div class="col col-12 col-md-5 mx-3">
+			<div class="col col-12 col-md-5 mx-3 mb-3">
 				<img src="{% static '/LDMSApp/images/scooter.jpg' %}" class="w-100 fil">
 			</div>
 		</div>
 		<div>
-			<div class="d-flex justify-content-center mb-3">
+			<div class="d-flex justify-content-center mb-3 pb-4">
 				<a href="#" title="about" class="text-decoration-none bg-primary text-light border rounded p-3">find out</a>
 			<div>
 </section>

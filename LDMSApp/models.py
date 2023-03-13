@@ -66,12 +66,12 @@ REGIONS = [
 #this is the model to register a laboratory facility so that clinicians can have access to
 #it should define the various test capacities of the laboratory
 class Laboratory(models.Model):
-	laboratory_manager = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+	laboratory_manager = models.CharField(max_length=100)
 	laboratory_name 	= models.CharField(max_length=200)
 	address 			= models.CharField(max_length=200)
-	Tel 				= models.IntegerField()
+	Tel 				= models.CharField(max_length=20)
 	digital_address 	= models.CharField(max_length=100)
-	region_of_location 	= models.CharField(max_length=2, choices=REGIONS)
+	region_of_location 	= models.CharField(max_length=50)
 	#let them list the the tests they do in laboratory separated by commas or spaces
 	#this is to enable it to be displayed using strip method
 	services_rendering 	= models.CharField(max_length=500)
@@ -129,8 +129,8 @@ class RequestTest(models.Model):
 		('S', 'STAT')
 	]
 
-	facility = models.ForeignKey(Hospital, on_delete=models.SET_NULL, blank=True, null=True)
-	request_to = models.OneToOneField(Laboratory, on_delete=models.SET_NULL, blank=True, null=True)
+	facility = models.CharField(max_length=200)
+	request_to = models.ForeignKey(Laboratory, on_delete=models.SET_NULL, blank=True, null=True)
 	type_of_test = models.TextField()
 	specimen_id = models.CharField(max_length=500)
 	speciment_type = models.CharField(max_length=200)
@@ -141,7 +141,7 @@ class RequestTest(models.Model):
 	date = models.DateField()
 
 	def __str__(self):
-		return self.name_of_test
+		return self.specimen_id
 
 class Delivery(models.Model):
 	company_name = models.CharField(max_length=100)

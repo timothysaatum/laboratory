@@ -21,12 +21,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <!--end of google fonts-->
     <link rel="stylesheet" type="text/css" href="{% static 'LDMSApp/css/style.css' %}">
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-    <header class="shadow-lg">
+    <header class="shadow-lg" id="nav-bar">
       <div class="inner-width">
         <a href="{% url 'home' %}" class="logo"><img src="{% static 'LDMSApp/images/logo.png' %}" alt="ldms home page" title="Home Page"></a>
         <i class="menu-toggle-btn fas fa-bars"></i>

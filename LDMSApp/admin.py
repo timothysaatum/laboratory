@@ -16,7 +16,7 @@ class PatientAdmin(admin.ModelAdmin):
 
 class LaboratoryAdmin(admin.ModelAdmin):
 	list_display = [
-		'laboratory_name', 'address', 'Tel', 'digital_address', 'region_of_location'
+		'laboratory_name', 'laboratory_manager', 'address', 'Tel', 'digital_address', 'region_of_location'
 	]
 
 class HospitalAdmin(admin.ModelAdmin):

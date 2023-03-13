@@ -5,6 +5,10 @@
   font-family: 'Roboto', sans-serif;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 header{
   height: 90px;
   background: #FFFFFF;
@@ -184,15 +188,28 @@ footer ul li i {
   background-size: cover;
 }
 
+h2 {
+  color: #191970;
+  font-family: 'Roboto', sans-serif;
+}
+
+body p {
+  color: #2F4F4F;
+  font-family: Arial, Helvetica Verdana, sans-serif;
+}
 
 .scrole{
   height: 85vh;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #191970;
+  opacity: 90%;
 }
 
-
+.scrole small{
+  font-size: 12px;
+  font-family: monospace;
+}
 .btn-light-green{
   background-color: limegreen;
   opacity: 0.7;
@@ -220,6 +237,11 @@ footer ul li i {
 .mid-bg{
   /*background-color: #0e4d53;
   opacity: 0.9;*/
+}
+
+#nav-bar,{
+  position: relative;
+  z-index: 9999 !important;
 }
 
 /* end of home page bg*/

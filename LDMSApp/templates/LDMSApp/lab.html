@@ -22,10 +22,10 @@ LDMS | Lab-sign-up
 		<form method="post">
     		{% csrf_token %}
     		<div class="form-group col-12 p-4 shadow text-primary fw-bolder">
-        	{{ form|crispy }}
+        	{{ lab_form|crispy }}
       		</div>
     		<div class="d-flex justify-content-center">
-    			<button type="submit" class="btn btn-primary my-2">Proceed to Pay</button>
+    			<button type="submit" class="btn btn-primary my-2">Create</button>
     		</div>
  		</form>
 	</div>
