@@ -24,7 +24,7 @@ LDMS | Home
 					{% for test in all_test_requested %}
 						<div class="row">
 							<div class="col-12 d-flex d-inline-block py-2">
-								<small class="text-light fw-bolder">{{test.type_of_test}}-{{test.department|truncatechars:14}} <button type="button" data-bs-toggle="modal" data-bs-target="#{{test.department}}" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
+								<small class="text-light fw-bolder">{{test.type_of_test|truncatechars:15}}-{{test.department|truncatechars:8}} <button type="button" data-bs-toggle="modal" data-bs-target="#{{test.department}}" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
 								<div>
 							<!-- Modal -->
 							<div class="modal fade" id="{{test.department}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

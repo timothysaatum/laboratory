@@ -38,7 +38,7 @@ class AddTestResultsForm(forms.ModelForm):
 		model = TestResult
 		exclude = ('patient', 'laboratory')
 
-class AddPatient(forms.ModelForm):
+class AddPatientForm(forms.ModelForm):
 	class Meta:
 		model = Patient
 		fields = '__all__'

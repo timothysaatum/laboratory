@@ -116,7 +116,7 @@ class TestResult(models.Model):
 	send_by = models.CharField(max_length=30)
 
 	def __str__(self):
-		return self.lab_sending.laboratory_name
+		return self.laboratory.Laboratory.laboratory_name
 #
 #
 #

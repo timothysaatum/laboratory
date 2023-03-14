@@ -33,10 +33,16 @@ class RequestTestAdmin(admin.ModelAdmin):
 		'department', 'description', 'name_requestor'
 	]
 
+class DeliveryAdmin(admin.ModelAdmin):
+	list_display = [
+		'company_name', 'owner', 'location', 
+		'digital_address', 'address', 'tel'
+	]
+
 admin.site.register(models.Laboratory, LaboratoryAdmin)
 admin.site.register(models.Patient, PatientAdmin)
 admin.site.register(models.FinancialSummmaryRecord, FinancialSummmaryRecordAdmin)
 admin.site.register(models.Hospital, HospitalAdmin)
 admin.site.register(models.TestResult, TestResultAdmin)
 admin.site.register(models.RequestTest, RequestTestAdmin)
-admin.site.register(models.Delivery)
+admin.site.register(models.Delivery, DeliveryAdmin)

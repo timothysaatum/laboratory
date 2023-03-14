@@ -241,7 +241,7 @@ body p {
   opacity: 0.9;*/
 }
 
-#nav-bar,{
+#nav-bar{
   position: relative;
   z-index: 9999 !important;
 }

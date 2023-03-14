@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 #from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 #from django.utils.decorators import method_decorator
-from .forms import (AddLaboratory, AddHospital, AddTestResultsForm, AddPatient, RequestTestForm, AddDelivery)
+from .forms import (AddLaboratory, AddHospital, AddTestResultsForm, AddPatientForm, RequestTestForm, AddDelivery)
 from django.contrib.auth.models import User
 from . models import (Laboratory, RequestTest, Hospital, TestResult)
 
@@ -14,7 +14,7 @@ def home_page(request):
 		#print(req_form)
 
 		#checking to see if the submitted form is valid
-		if req_form.is_valid() and add_form.is_valid():
+		if req_form.is_valid(): #and add_form.is_valid():
 
 			#taking logged in user first name and last name
 			facility = request.user.first_name + request.user.last_name
@@ -31,7 +31,7 @@ def home_page(request):
 			date = req_form.cleaned_data['date']
 
 			#creating send test results form
-			patient = TestResult.objects.filter(patient=patient).value()
+			#patient = TestResult.objects.filter(patient=patient).value()
 
 
 			#adding test request to the data base
