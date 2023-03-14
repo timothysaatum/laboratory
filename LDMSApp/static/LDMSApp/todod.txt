@@ -1,0 +1,2 @@
+1. let patient be created automatically when a test request is submit
+2. work on test request and patient

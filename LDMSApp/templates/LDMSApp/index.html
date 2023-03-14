@@ -21,13 +21,13 @@ LDMS | Home
 			<div class="col-12 col-md-2">
 				<small class="text-center text-light">Notifications</small>
 				<div class="scrole">
-					{% for test in req_notifi %}
+					{% for test in all_test_requested %}
 						<div class="row">
 							<div class="col-12 d-flex d-inline-block py-2">
-								<small class="text-light fw-bolder">{{test.type_of_test}}-{{test.department}} <button type="button" data-bs-toggle="modal" data-bs-target="#ShowId" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
+								<small class="text-light fw-bolder">{{test.type_of_test}}-{{test.department|truncatechars:14}} <button type="button" data-bs-toggle="modal" data-bs-target="#{{test.department}}" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
 								<div>
 							<!-- Modal -->
-							<div class="modal fade" id="ShowId" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal fade" id="{{test.department}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-scrollable">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -51,7 +51,7 @@ LDMS | Home
 						</div>
 					{% empty %}
 					<div>
-						<small>No test send yet</small>
+						<small class="text-light p-2 fw-bolder">No test send yet</small>
 					</div>
 					{% endfor %}
 				</div>
@@ -61,7 +61,7 @@ LDMS | Home
 					<div class="col-12 col-md-3 m-2 mid-bg">
 						<div>
 							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-lg btn-light-blue text-light fw-bolder" data-bs-toggle="modal" data-bs-target="#RequestId">
+							<button type="button" class="btn btn-lg fw-bolder btn-light-blue" data-bs-toggle="modal" data-bs-target="#RequestId">
 								Request Test
 							</button>
 							<!-- Modal -->
@@ -75,7 +75,7 @@ LDMS | Home
 										<div class="modal-body">
 											<form method="POST">
 											{% csrf_token %}
-											{{form|crispy}}
+											{{req_form|crispy}}
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -119,7 +119,7 @@ LDMS | Home
 					</div>
 					<div class="col-12 col-md-3 m-2 mid-bg">
 						<div>
-							<button type="button" class="btn btn-lg btn-light-yellow fw-bolder text-light px-2" data-bs-toggle="modal" data-bs-target="#Delivery">
+							<button type="button" class="btn btn-lg btn-light-yellow fw-bolder px-2" data-bs-toggle="modal" data-bs-target="#Delivery">
 								Find Deliveries
 							</button>
 							<!-- Modal -->

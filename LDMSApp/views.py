@@ -2,48 +2,58 @@ from django.shortcuts import render, redirect
 #from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 #from django.utils.decorators import method_decorator
-from .forms import (AddLaboratory, AddHospital, AddTestResults, AddPatient, RequestTestForm, AddDelivery)
+from .forms import (AddLaboratory, AddHospital, AddTestResultsForm, AddPatient, RequestTestForm, AddDelivery)
 from django.contrib.auth.models import User
-from . models import (Laboratory, RequestTest, Hospital)
+from . models import (Laboratory, RequestTest, Hospital, TestResult)
 
 
 def home_page(request):
 	if request.method == 'POST':
-		form = RequestTestForm(request.POST)
-		print(form)
-		if form.is_valid():
+		req_form = RequestTestForm(request.POST)
+		add_form = AddTestResultsForm(request.POST, request.FILES)
+		#print(req_form)
+
+		#checking to see if the submitted form is valid
+		if req_form.is_valid() and add_form.is_valid():
+
+			#taking logged in user first name and last name
 			facility = request.user.first_name + request.user.last_name
-			request_to = form.cleaned_data['request_to']
-			type_of_test = form.cleaned_data['type_of_test']
-			specimen_id = form.cleaned_data['specimen_id']
-			speciment_type = form.cleaned_data['speciment_type']
-			test_status = form.cleaned_data['test_status']
-			department = form.cleaned_data['department']
-			description = form.cleaned_data['description']
-			name_requestor = form.cleaned_data['name_requestor']
-			date = form.cleaned_data['date']
+
+			#getting the other user parameters from the form when a user submits a test request form
+			request_to = req_form.cleaned_data['request_to']
+			type_of_test = req_form.cleaned_data['type_of_test']
+			specimen_id = req_form.cleaned_data['specimen_id']
+			speciment_type = req_form.cleaned_data['speciment_type']
+			test_status = req_form.cleaned_data['test_status']
+			department = req_form.cleaned_data['department']
+			description = req_form.cleaned_data['description']
+			name_requestor = req_form.cleaned_data['name_requestor']
+			date = req_form.cleaned_data['date']
+
+			#creating send test results form
+			patient = TestResult.objects.filter(patient=patient).value()
+
+
+			#adding test request to the data base
 			RequestTest.objects.create(facility=facility, request_to=request_to, type_of_test=type_of_test, 
 				specimen_id=specimen_id, speciment_type=speciment_type, test_status=test_status, 
 				department=department, description=description,	name_requestor=name_requestor, date=date)
+			#redirecting users to the homepage
 			return redirect('home')
-		print(form.errors.as_data())
-	form = RequestTestForm()
-	req_notifi = RequestTest.objects.all()
-	return render(request, 'LDMSApp/index.html', {'form':form, 'req_notifi':req_notifi})
-#home view
-#class HomeView(TemplateView):
-#	template_name = 'LDMSApp/index.html'
-
-	#@method_decorator(login_required)
-	#def dispatch(self, *args, **kwargs):
-	#	return super().dispatch(*args, **kwargs)
-
+		print(req_form.errors.as_data())
+	req_form = RequestTestForm()
+	add_form = AddTestResultsForm()
+	all_test_requested = RequestTest.objects.all()
+	return render(request, 'LDMSApp/index.html', {'req_form':req_form, 'all_test_requested':all_test_requested})
+#
+#
+#view for adding a laboratory to the database
 @login_required
 def add_laboratory(request):
 	if request.method == 'POST':
 		lab_form = AddLaboratory(request.POST)
 		if lab_form.is_valid():
-			laboratory_manager = request.user.first_name + ' ' + request.user.last_name
+			laboratory_manager = User.objects.get(id=request.user.id)
 			address = lab_form.cleaned_data['address']
 			Tel = lab_form.cleaned_data['Tel']
 			digital_address = lab_form.cleaned_data['digital_address']

@@ -219,15 +219,17 @@ body p {
 .btn-light-blue{
   background-color: #191970;
   opacity: 0.7;
-  color: wite;
+  color: white;
 }
+/*
 .btn-light-blue:hover{
   color: black;
 }
-
+*/
 .btn-light-yellow{
   background-color: #FF8C00;
   opacity: 0.7;
+  color: white;
 }
 /*
 .fil{

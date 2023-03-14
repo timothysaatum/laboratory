@@ -7,7 +7,7 @@ from .models import Profile
 #	model = UserCreationModel
 
 class SignUp(UserCreationForm):
-	username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your preferred username'}))
+	username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your full as your username e.g first_name@last_name'}))
 	first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g Your first name'}))
 	last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Your last name'}))
 	email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder':'e.g example@gmail.com'}))
@@ -15,7 +15,7 @@ class SignUp(UserCreationForm):
 	#password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Please Confirm Password'}))
 	class Meta:
 		model = User
-		fields = ['username','first_name', 'last_name', 'email', 'password1', 'password2']
+		fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
 	email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'e.g example@gmail.com'}))

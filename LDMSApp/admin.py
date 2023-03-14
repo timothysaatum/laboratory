@@ -4,14 +4,13 @@ from .import models
 
 class FinancialSummmaryRecordAdmin(admin.ModelAdmin):
 	list_display = [
-		'payee', 'amount_paid', 'total_fee_due', 'balance', 'total_test',
+		'amount_paid', 'total_fee_due', 'balance', 'total_test',
 		'total_cost', 'total_discount'	
 	]
 
 class PatientAdmin(admin.ModelAdmin):
 	list_display = [
-		'patient_name', 'age', 'sex', 'diagnosis', 'facility', 'patient_id', 'mobile_number', 
-		'insuarance_type', 'insuarance_number'
+		'patient_name', 'age', 'sex', 'diagnosis', 'department', 'hospital', 'laboratory', 'delivery', 'patient_id', 'mobile_number'
 	]
 
 class LaboratoryAdmin(admin.ModelAdmin):
@@ -40,3 +39,4 @@ admin.site.register(models.FinancialSummmaryRecord, FinancialSummmaryRecordAdmin
 admin.site.register(models.Hospital, HospitalAdmin)
 admin.site.register(models.TestResult, TestResultAdmin)
 admin.site.register(models.RequestTest, RequestTestAdmin)
+admin.site.register(models.Delivery)

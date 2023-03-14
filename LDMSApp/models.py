@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 #transaction of the patient
 class FinancialSummmaryRecord(models.Model):
 	#the payable due by the patient
-	payee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
+	#payee = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
 	amount_paid 	= models.CharField(max_length=50)
 	#total amount payable that a patient is supposed to make 
 	#to the facility
@@ -16,7 +16,7 @@ class FinancialSummmaryRecord(models.Model):
 	total_cost 		= models.CharField(max_length=50)
 	total_discount 	= models.CharField(max_length=50)
 	def __str__(self):
-		return self.paid_amount
+		return self.amount_paid
 #
 #
 #
@@ -33,18 +33,18 @@ class Patient(models.Model):
 		('O', 'Other')
 	]
 
-	financial_summary 	= models.ForeignKey('Hospital', on_delete=models.SET_NULL, blank=True, null=True)
+	hospital 	= models.ForeignKey('Hospital', on_delete=models.SET_NULL, blank=True, null=True)
+	laboratory = models.ForeignKey('Laboratory', on_delete=models.SET_NULL, blank=True, null=True)
+	delivery = models.ForeignKey('Delivery', on_delete=models.SET_NULL, blank=True, null=True)
 	patient_name 		= models.CharField(max_length=100)
 	date_of_birth 		= models.DateField('DOB')
 	age 				= models.IntegerField()
 	sex 				= models.CharField(max_length=1, choices=SEX)
 	diagnosis 			= models.CharField(max_length=300)
-	facility 			= models.CharField('clinic/dept', max_length=500)
+	department 			= models.CharField('clinic/dept', max_length=500)
 	patient_id 			= models.CharField(max_length=1000)
 	#requester 			= models.CharField(max_length=200)
-	insuarance_type 	= models.CharField(max_length=200)
-	insuarance_number 	= models.CharField(max_length=200)
-	mobile_number 		= models.IntegerField()
+	mobile_number 		= models.CharField(max_length=15)
 	#to keep track of the time the record entered
 	#time_issued 		= models.DateField(timezone.now())
 
@@ -66,7 +66,7 @@ REGIONS = [
 #this is the model to register a laboratory facility so that clinicians can have access to
 #it should define the various test capacities of the laboratory
 class Laboratory(models.Model):
-	laboratory_manager = models.CharField(max_length=100)
+	laboratory_manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 	laboratory_name 	= models.CharField(max_length=200)
 	address 			= models.CharField(max_length=200)
 	Tel 				= models.CharField(max_length=20)
@@ -102,8 +102,8 @@ class Hospital(models.Model):
 #the hospital requesting the test
 #
 class TestResult(models.Model):
-	patient = models.OneToOneField(Patient, on_delete=models.SET_NULL, blank=True, null=True)
-	laboratory = models.OneToOneField(Laboratory, on_delete=models.CASCADE)
+	#patient = models.OneToOneField(Patient, on_delete=models.SET_NULL, blank=True, null=True)
+	laboratory = models.ForeignKey(Laboratory, on_delete=models.CASCADE)
 	patient = models.ForeignKey(Patient, on_delete=models.SET_NULL, blank=True, null=True)
 	specimen_id = models.CharField(max_length=100)
 	upload_pdf = models.FileField(upload_to='static/test_results', null=True, blank=True)

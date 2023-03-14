@@ -33,10 +33,10 @@ class AddDelivery(forms.ModelForm):
 		model = Delivery
 		fields = '__all__'
 
-class AddTestResults(forms.ModelForm):
+class AddTestResultsForm(forms.ModelForm):
 	class Meta:
 		model = TestResult
-		fields = '__all__'
+		exclude = ('patient', 'laboratory')
 
 class AddPatient(forms.ModelForm):
 	class Meta:
@@ -46,9 +46,7 @@ class AddPatient(forms.ModelForm):
 class RequestTestForm(forms.ModelForm):
 	class Meta:
 		model = RequestTest
-		fields = ['request_to', 'type_of_test', 'specimen_id', 'speciment_type', 'test_status', 'department'
-			, 'description', 'name_requestor', 'date'
-		]
+		exclude = ('facility',)
 		
 		widget = {
 			'date':forms.DateInput(attrs={'placeholder':'MM/DD/YYYY'})
