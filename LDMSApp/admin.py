@@ -21,16 +21,16 @@ class LaboratoryAdmin(admin.ModelAdmin):
 class HospitalAdmin(admin.ModelAdmin):
 	list_display = ['hospital_name', 'region_of_location', 'address', 'Tel', 'digital_address']
 
-class TestResultAdmin(admin.ModelAdmin):
+class ResultAdmin(admin.ModelAdmin):
 	list_display = [#
 		'laboratory', 'patient', 'specimen_id', 'upload_pdf', 'parameter', 'value',
 		'comments', 'send_to'
 	]
 
-class RequestTestAdmin(admin.ModelAdmin):
+class TestAdmin(admin.ModelAdmin):
 	list_display = [
-		'facility', 'request_to', 'specimen_id', 
-		'department', 'description', 'name_requestor'
+		'referring_facility', 'refer_sample_to', 'sample_no', 'date', 'age_of_patient', 'gender',
+		'department', 'brief_notes', 'name_of_referring_clinician'
 	]
 
 class DeliveryAdmin(admin.ModelAdmin):
@@ -43,6 +43,6 @@ admin.site.register(models.Laboratory, LaboratoryAdmin)
 admin.site.register(models.Patient, PatientAdmin)
 admin.site.register(models.FinancialSummmaryRecord, FinancialSummmaryRecordAdmin)
 admin.site.register(models.Hospital, HospitalAdmin)
-admin.site.register(models.TestResult, TestResultAdmin)
-admin.site.register(models.RequestTest, RequestTestAdmin)
+admin.site.register(models.Result, ResultAdmin)
+admin.site.register(models.Test, TestAdmin)
 admin.site.register(models.Delivery, DeliveryAdmin)

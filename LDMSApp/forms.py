@@ -1,5 +1,5 @@
 from django import forms
-from .models import Hospital, TestResult, RequestTest, Patient, Delivery
+from .models import Hospital, Result, Test, Patient, Delivery
 from django.utils.translation import gettext_lazy as _
 
 
@@ -33,23 +33,21 @@ class AddDelivery(forms.ModelForm):
 		model = Delivery
 		fields = '__all__'
 
-class AddTestResultsForm(forms.ModelForm):
+class ResultsForm(forms.ModelForm):
 	class Meta:
-		model = TestResult
-		exclude = ('patient', 'laboratory')
+		model = Result
+		exclude = ('laboratory', )
+		#fields = '__all__'
 
 class AddPatientForm(forms.ModelForm):
 	class Meta:
 		model = Patient
 		fields = '__all__'
 
-class RequestTestForm(forms.ModelForm):
+class TestForm(forms.ModelForm):
 	class Meta:
-		model = RequestTest
-		exclude = ('facility',)
-		
-		widget = {
-			'date':forms.DateInput(attrs={'placeholder':'MM/DD/YYYY'})
-		}
+		model = Test
+		exclude = ('date', 'referring_facility')
+
 
 		

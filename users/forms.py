@@ -1,29 +1,45 @@
 from django import forms
-from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
-#class SignUp(forms.ModelForm):
-#	model = UserCreationModel
+from .models import CustomUser
+
+
+#form to display to the fron end for users to signup
+REGIONS = [
+		('Upper West', 'Upper West'),
+		('Volta', 'Volta'),
+		('Northen', 'Northen'),
+		('Ashanti', 'Ashanti'),
+		('Greater Accra', 'Greater Accra'),
+		('Oti Region', 'Oti Region'),
+		('Savannah', 'Savannah'),
+		('Upper East', 'Upper East')
+	]
 
 class SignUp(UserCreationForm):
-	username = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your full as your username e.g first_name@last_name'}))
-	first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'e.g Your first name'}))
-	last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Your last name'}))
 	email = forms.CharField(widget=forms.EmailInput(attrs={'placeholder':'e.g example@gmail.com'}))
+	facility_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Enter your facility name'}))
+	region_of_location = forms.MultipleChoiceField(widget=forms.CheckboxSelectMultiple(attrs={'placeholder':'Check all that apply'}), choices=REGIONS)
+	telephone = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'+233 594 382 87'}))
+	city_or_town = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Las Vegas'}))
+	digital_address = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'XL-0476-0872'}))
+	address = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Tamale, NR'}))
+	is_a_laboratory = forms.BooleanField()
+	is_a_delivery = forms.BooleanField()
 	#password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Please Enter a strong Password'}))
 	#password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Please Confirm Password'}))
 	class Meta:
-		model = User
-		fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
+		model = CustomUser
+		fields = ['email', 'facility_name','is_a_laboratory', 'is_a_delivery', 'telephone', 'digital_address', 'address', 'city_or_town', 'region_of_location', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
 	email = forms.EmailField(widget=forms.EmailInput(attrs={'placeholder':'e.g example@gmail.com'}))
-	first_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Ella'}))
-	last_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Pure'}))
+	facility = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Ella'}))
+	location = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Pure'}))
 	class Meta:
-		model = User
-		fields = ['username','first_name', 'last_name', 'email']
+		model = CustomUser
+		fields = ['facility', 'location', 'telephone', 'email',]
 
 
 

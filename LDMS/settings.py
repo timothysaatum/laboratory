@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG_STATUS', cast=bool)
 
-ALLOWED_HOSTS = config('CURRENT_ALLOWED_HOST', cast = Csv())
+#ALLOWED_HOSTS = config('CURRENT_ALLOWED_HOST', cast = Csv())
 
 
 # Application definition
@@ -42,9 +42,11 @@ INSTALLED_APPS = [
     ############################
     'LDMSApp',
     'users',
+    'notification',
     'crispy_forms',
     'crispy_bootstrap5',
-    #'channels'
+    'channels',
+    'schema_graph'
 ]
 
 MIDDLEWARE = [
@@ -72,10 +74,22 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
-    },
+    }
 ]
 
-WSGI_APPLICATION = 'LDMS.wsgi.application'
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [(config('CURRENT_ALLOWED_HOST', cast = Csv()), 6379)],
+        },
+    },
+}
+
+
+#WSGI_APPLICATION = 'LDMS.wsgi.application'
+ASGI_APPLICATION = 'LDMS.asgi.application'
+
 
 
 # Database
@@ -142,3 +156,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config('EMAIL_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_PASS')
+AUTH_USER_MODEL = 'users.CustomUser'

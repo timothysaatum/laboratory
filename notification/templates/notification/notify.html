@@ -1,0 +1,20 @@
+<!--=============================Extending the base template=================-->
+
+{% extends 'LDMSApp/base.html' %}
+{% load crispy_forms_tags %}
+<!--=============================End of Extension=============================-->
+
+
+<!--=============================Beginning of Title Block=====================-->
+{% block title %}
+LDMS | Notification
+{% endblock title %}
+<!--=============================End of title Block=============================-->
+
+<!--=============================Beginning of Content Block=====================-->
+{% block content %}
+{% for r in re %}
+<p>{{r.department}}</p>
+{% endfor %}
+{% endblock content %}
+<!--=============================End of Content Block=============================-->

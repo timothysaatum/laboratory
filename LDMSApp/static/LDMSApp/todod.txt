@@ -1,2 +1,5 @@
 1. let patient be created automatically when a test request is submit
 2. work on test request and patient
+3. try using multiple form widget in the index view to return the three form
+3. changing the index view to a class based view
+4. add a searching field in the form in the index view such that as the user types it displays data related to only them for them to select

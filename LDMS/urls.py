@@ -19,5 +19,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/ldms-manager-admin/', admin.site.urls),
     path('', include('LDMSApp.urls')),
-    path('users/accounts/', include('users.urls'))
+    path('users/accounts/', include('users.urls')),
+    path('live/', include('notification.urls'))
 ]

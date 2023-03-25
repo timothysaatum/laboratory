@@ -186,6 +186,7 @@ footer ul li i {
   background: url('../images/microscope.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 h2 {
@@ -198,12 +199,32 @@ body p {
   font-family: Arial, Helvetica Verdana, sans-serif;
 }
 
+.typing-text::after{
+  content: "";
+  animation: typing 3s steps(15) forwards;
+}
+
+@keyframes{
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
 .scrole{
   height: 85vh;
   overflow-x: hidden;
   overflow-y: auto;
   background-color: #191970;
   opacity: 90%;
+}
+
+@media only screen and (max-width: 425px){
+  .scrole{
+    height: 40vh;
+  }
 }
 
 .scrole small{
@@ -221,11 +242,11 @@ body p {
   opacity: 0.7;
   color: white;
 }
-/*
+
 .btn-light-blue:hover{
-  color: black;
+  color: #FF8C00;
 }
-*/
+
 .btn-light-yellow{
   background-color: #FF8C00;
   opacity: 0.7;
@@ -256,3 +277,4 @@ body p {
 .div-bg{
   border: solid green thin;
 }
+
