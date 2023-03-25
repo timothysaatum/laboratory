@@ -33,6 +33,8 @@ DEBUG = config('DEBUG_STATUS', cast=bool)
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -86,6 +88,8 @@ CHANNEL_LAYERS = {
     },
 }
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
 
 #WSGI_APPLICATION = 'LDMS.wsgi.application'
 ASGI_APPLICATION = 'LDMS.asgi.application'
