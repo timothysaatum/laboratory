@@ -7,11 +7,11 @@ User = settings.AUTH_USER_MODEL
 
 
 
-class CustomUser(AbstractBaseUser):
+class Facility(AbstractBaseUser):
 	email = models.EmailField(unique=True)
 	facility_name = models.CharField(max_length=200)
 	city_or_town = models.CharField(max_length=200)
-	region_of_location = models.CharField(max_length=20)
+	region_of_location = models.CharField(max_length=300)
 	address = models.CharField(max_length=100)
 	digital_address = models.CharField(max_length=100)
 	is_a_delivery = models.BooleanField(default=False)
@@ -26,6 +26,9 @@ class CustomUser(AbstractBaseUser):
 	REQUIRED_FIELDS = 	['telephone']
 
 	objects = CustomManager()
+	class Meta:
+		verbose_name_plural = 'facilities'
+
 
 	def __str__(self):
 		return self.facility_name

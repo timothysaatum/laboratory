@@ -22,3 +22,7 @@ urlpatterns = [
     path('users/accounts/', include('users.urls')),
     path('live/', include('notification.urls'))
 ]
+
+admin.site.site_header = 'LDMS ADMINISTRATION'
+admin.site.site_title = 'LDMS ADMIN SITE'
+admin.site.index_title = 'LDMS ADMIN'

@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import Profile
 
-from .models import CustomUser
+from .models import Facility
 
 
 #form to display to the fron end for users to signup
@@ -30,7 +30,7 @@ class SignUp(UserCreationForm):
 	#password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Please Enter a strong Password'}))
 	#password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder':'Please Confirm Password'}))
 	class Meta:
-		model = CustomUser
+		model = Facility
 		fields = ['email', 'facility_name','is_a_laboratory', 'is_a_delivery', 'telephone', 'digital_address', 'address', 'city_or_town', 'region_of_location', 'password1', 'password2']
 
 class UserUpdateForm(forms.ModelForm):
@@ -38,7 +38,7 @@ class UserUpdateForm(forms.ModelForm):
 	facility = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Ella'}))
 	location = forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Pure'}))
 	class Meta:
-		model = CustomUser
+		model = Facility
 		fields = ['facility', 'location', 'telephone', 'email',]
 
 

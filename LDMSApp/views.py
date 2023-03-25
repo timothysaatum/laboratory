@@ -13,7 +13,7 @@ from . models import (Laboratory, Test, Hospital, Result, Delivery)
 #from channels.layers import get_channel_layer
 #from asgiref.sync import async_to_sync
 from django.conf import settings
-from users.models import CustomUser
+#from users.models import CustomUser
 
 #class HomeView(TemplateView):
 #	template_name = 'LDMSApp/index.html'
@@ -31,7 +31,7 @@ from users.models import CustomUser
 User = get_user_model()
 
 
-@login_required
+#@login_required
 def home_page(request):
 	if request.method == 'POST':
 		req_form = TestForm(request.POST)
