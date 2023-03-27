@@ -29,7 +29,8 @@
     <title>{% block title %}{% endblock title %}</title>
   </head>
   <body>
-    <header class="shadow fixed-top" id="nav-bar">
+    {% block navbar %}
+    <header class="light-blue" id="nav-bar">
       <div class="inner-width">
         <a href="{% url 'home' %}" class="logo"><img src="{% static 'LDMSApp/images/logo.png' %}" alt="ldms home page" title="Home Page"></a>
         <i class="menu-toggle-btn fas fa-bars"></i>
@@ -48,69 +49,19 @@
         </nav>
       </div>
     </header>
-    <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">My Website</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>-->
+    {% endblock navbar %}
 
     {% block content %}
 
     {% endblock content %}
-    {% if not user.is_authenticated %}
-    <section class="bg-dark text-white">
-      <footer>
-    <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <h3>About Us</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis urna non odio molestie, sit amet tincidunt felis lacinia.</p>
-      </div>
-      <div class="col-md-4">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h3>Contact Us</h3>
-        <ul>
-          <li><i class="fa fa-map-marker"></i>TTH Road, Tamale, Northern Region 00233</li>
-          <li><i class="fa fa-phone"></i>+233-800-123-4567</li>
-          <li><i class="fa fa-envelope"></i>info@ldmssystems.com</li>
-        </ul>
-      </div>
-    </div>
+    {% block footer %}
+   {% endblock footer %}
+   <section>
+  <div class="text-center mt-4 mb-4">
+    <a href="#" class="text-muted">Privacy Policy</a>
   </div>
-</footer>
+</section>
 
-    </section>
-  {% endif %}
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

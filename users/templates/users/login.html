@@ -2,25 +2,34 @@
 
 {% extends 'LDMSApp/base.html' %}
 {% load crispy_forms_tags %}
-<!--=============================End of Extension=============================-->
-
-
-<!--=============================Beginning of Title Block=====================-->
 {% block title %}
-LDMS | Login
+Sign In
 {% endblock title %}
-<!--=============================End of title Block=============================-->
-
-<!--=============================Beginning of Content Block=====================-->
+{% block navbar %}
+  <header class="light-blue" id="nav-bar">
+      <div class="inner-width">
+        <a href="{% url 'home' %}" class="logo text-decoration-none text-light fs-3 fw-bolder">LDMS</a>
+        <i class="menu-toggle-btn fas fa-bars"></i>
+        <nav class="navigation-menu">
+          <a href="{% url 'home' %}"> Home</a>
+          <a href="#"> About</a>
+          <a href="#"> Services</a>
+          <a href="#"> Contact</a>
+          <a href="{% url 'login' %}"> Login</a>
+          <a href="{% url 'signup' %}" class="special-a"> <h4 class="h">Sign Up</h4></a>
+        </nav>
+      </div>
+</header>
+{% endblock navbar %}
 {% block content %}
-<section class="container my-3 bg-light">
-	<div class="text-center">
-		<legend class="text-capitalize fw-bolder mt-2 text-decoration-underline text-success">Enter your credentials to login</legend>
-	</div>
-	<div class="col-6 my-5">
+<body class="light-blue">
+  <section class="container my-3">
+	<div class="d-flex justify-content-center">
+		<div class="col-6 my-5">
 		<form method="post">
     		{% csrf_token %}
-    		<div class="col-12 p-4 shadow text-primary fw-bolder">
+    		<div class="col-12 p-4 shadow text-primary fw-bolder bg-light">
+    			<legend class="text-capitalize fw-bolder mt-2 text-decoration-underline text-success text-center">Enter your credentials to login</legend>
         		{{ form|crispy }}
         		<div class="form-group text-center mt-3">
         			<button class="btn btn-outline-success" type="submit">Sign In</button>
@@ -35,6 +44,11 @@ LDMS | Login
       		</small>
  		</form>
 	</div>
+	</div>
 </section>
+</body>
 {% endblock content %}
-<!--=============================End of Content Block=============================-->
+
+
+{% block footer %}
+{% endblock footer %}

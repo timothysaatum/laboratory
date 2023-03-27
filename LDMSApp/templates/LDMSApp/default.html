@@ -1,0 +1,54 @@
+{% extends 'LDMSApp/base.html' %}
+{% load static %}
+
+{% block title %}
+Welcome
+{% endblock title %}
+{% block navbar %}
+  <header class="light-blue" id="nav-bar">
+      <div class="inner-width">
+        <a href="{% url 'home' %}" class="logo text-decoration-none text-light fs-3 fw-bolder">LDMS</a>
+        <i class="menu-toggle-btn fas fa-bars"></i>
+        <nav class="navigation-menu">
+          <a href="{% url 'home' %}"> Home</a>
+          <a href="#"> About</a>
+          <a href="#"> Services</a>
+          <a href="#"> Contact</a>
+          <a href="{% url 'login' %}"> Login</a>
+          <a href="{% url 'signup' %}" class="special-a"> <h4 class="h">Sign Up</h4></a>
+        </nav>
+      </div>
+</header>
+{% endblock navbar %}
+{% block content %}
+<body class="light-blue">
+  <div class="mt-5 mx-5">
+    <div class="container-fluid mt-3">
+      <div class="row d-flex justify-content-center">
+        <div class="col col-md-4 col-sm-12">
+        <ul>
+          <li class="text-light fw-bolder h-style"> ONLINE SPECIALTY DOCTOR</li>
+        </ul>
+        <h1 class="text-light fw-bolder pt-5 mt-5 mb-5">Meet Your</h1>
+        <span class="text-light fw-bolder custom-border mt-5 p-4 fs-3">Doctor's Team</span>
+      </div>
+      <div class="col col-md-4 col-sm-12 doc-bg">
+        <div class="row d-lex justify-content-between">
+          <div class="col-6 text-start con-img pt-4 px-3"><i class="fa-solid fa-house-medical fa-3x"></i></div>
+          <div class="col-6 text-end con-img pt-4 px-3"><i class="fa-solid fa-truck-medical fa-3x"></i></div>
+        </div>
+
+        <div class="col-4 text-center bg-light">
+          <h4>Available 24/7</h4>
+          <small>what we can do</small>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</body>
+{% endblock content %}
+
+
+{% block footer %}
+{% endblock footer %}

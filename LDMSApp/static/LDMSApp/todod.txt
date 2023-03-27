@@ -3,3 +3,94 @@
 3. try using multiple form widget in the index view to return the three form
 3. changing the index view to a class based view
 4. add a searching field in the form in the index view such that as the user types it displays data related to only them for them to select
+
+
+
+
+
+
+<section id="hero">
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<h1>Welcome to our Referral System</h1>
+					<p class="lead">We provide a fast and efficient way for hospitals to send and receive laboratory samples.</p>
+					<p class="lead">Our system allows you to easily refer samples to a laboratory and track their progress through the testing process.</p>
+					<a href="#" class="btn btn-primary">Learn More</a>
+				</div>
+				<div class="col-md-6">
+					<img src="{% static '/LDMSApp/images/scooter.jpg' %}" alt="Sample Collection" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</section>
+
+<section class="features mt-5 mb-5 ">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+          		<div class="card">
+            		<div class="card-body">
+              			<h5 class="card-title">Efficient</h5>
+              			<p class="card-text">Our system streamlines the sample referral process, reducing delays, cost and improving patient care. We make sure the nature of the sample received is reported to the hospital of interest</p>
+            		</div>
+          		</div>
+        	</div>
+        	<div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Secure</h5>
+              <p class="card-text">We use industry-standard encryption to keep your patient data safe and secure. We use state-of-the-art technology and experienced to ensure security and timely mitigation of any threat directed towards us</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sample Referral</h5>
+              <p class="card-text">With our easy-to-use system, you can quickly refer samples to any laboratory for testing. Simply enter the sample details, and they'll take care of the rest. We make sure they are delivered in time to laboratory of interest.</p>
+            </div>
+          </div>
+        </div>
+		</div>
+	</div>
+</section>
+
+
+
+
+
+
+
+
+
+   <section class="bg-dark text-white">
+      <footer>
+    <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>About Us</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum venenatis urna non odio molestie, sit amet tincidunt felis lacinia.</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Contact Us</h3>
+        <ul>
+          <li><i class="fa fa-map-marker"></i>TTH Road, Tamale, Northern Region 00233</li>
+          <li><i class="fa fa-phone"></i>+233-800-123-4567</li>
+          <li><i class="fa fa-envelope"></i>info@ldmssystems.com</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </section>

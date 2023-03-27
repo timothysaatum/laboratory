@@ -28,7 +28,7 @@ LDMS | Home
 								<small class="text-light fw-bolder">{{test.type_of_test|truncatechars:15}}-{{test.department|truncatechars:8}} <button type="button" data-bs-toggle="modal" data-bs-target="#{{test.department}}" title="patient id = {{test.specimen_id}}" class="text-decoration-underline">view</button></small>
 								<div>
 							<!-- Modal -->
-							<div class="modal fade" id="{{test.department}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+							<div class="modal fade" id="{{test.specimen_id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-scrollable">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -169,56 +169,6 @@ LDMS | Home
 		</div>
 	</div>
 </section>
-<section id="hero">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-md-6">
-					<h1>Welcome to our Referral System</h1>
-					<p class="lead">We provide a fast and efficient way for hospitals to send and receive laboratory samples.</p>
-					<p class="lead">Our system allows you to easily refer samples to a laboratory and track their progress through the testing process.</p>
-					<a href="#" class="btn btn-primary">Learn More</a>
-				</div>
-				<div class="col-md-6">
-					<img src="{% static '/LDMSApp/images/scooter.jpg' %}" alt="Sample Collection" class="img-fluid">
-				</div>
-			</div>
-		</div>
-	</section>
 
-<section class="features mt-5 mb-5 ">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-          		<div class="card">
-            		<div class="card-body">
-              			<h5 class="card-title">Efficient</h5>
-              			<p class="card-text">Our system streamlines the sample referral process, reducing delays, cost and improving patient care. We make sure the nature of the sample received is reported to the hospital of interest</p>
-            		</div>
-          		</div>
-        	</div>
-        	<div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Secure</h5>
-              <p class="card-text">We use industry-standard encryption to keep your patient data safe and secure. We use state-of-the-art technology and experienced to ensure security and timely mitigation of any threat directed towards us</p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Sample Referral</h5>
-              <p class="card-text">With our easy-to-use system, you can quickly refer samples to any laboratory for testing. Simply enter the sample details, and they'll take care of the rest. We make sure they are delivered in time to laboratory of interest.</p>
-            </div>
-          </div>
-        </div>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="text-center mt-4 mb-4">
-		<a href="#" class="text-muted">Privacy Policy</a>
-	</div>
-</section>
 {% endblock content %}
 <!--=============================End of Content Block=============================-->

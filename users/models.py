@@ -50,11 +50,13 @@ class Profile(models.Model):
 	email = models.EmailField()
 	telephone = models.CharField(max_length=100)
 	address = models.CharField(max_length=100)
+	facility_name = models.ForeignKey(Facility, on_delete=models.SET_NULL, null=True, blank=True)
+	city_or_town = models.CharField(max_length=200)
 	region_of_location = models.CharField(max_length=200)
 	digital_address = models.CharField(max_length=100)
 	
 	def __str__(self):
-		return f'{self.user.username} Profile'
+		return f'{self.user.facility_name} Profile'
 
 
 			

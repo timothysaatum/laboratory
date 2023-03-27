@@ -16,14 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-admin.site.site_header = 'LDMS ADMINISTRATION'
+
 urlpatterns = [
     path('admin/ldms-manager-admin/', admin.site.urls),
     path('', include('LDMSApp.urls')),
     path('users/accounts/', include('users.urls')),
     path('live/', include('notification.urls'))
 ]
-
-
-admin.site.site_title = 'LDMS ADMIN SITE'
-admin.site.index_title = 'LDMS ADMIN'
